@@ -42,5 +42,27 @@ class CompanyController extends Controller
         return redirect()->route('companies.index')->with('success','Company has been created successfully.');
     }
 
+    /**
+     * Show the form for ediditing the specified company.
+     */
+    public function edit(Company $company)
+    {
+        return view('companies.edit',compact('company'));
+    }
 
+    /**
+    * Update the specified company in database.
+    */
+    public function update(Request $request, Company $company)
+    {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'address' => 'required',
+        ]);
+        
+        $company->fill($request->post())->save();
+
+        return redirect()->route('companies.index')->with('success','Company Has Been updated successfully');
+    }
 }
