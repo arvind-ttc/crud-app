@@ -18,4 +18,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Gives the named routes
+// https://stackoverflow.com/questions/23505875/laravel-routeresource-vs-routecontroller
 Route::resource('companies', CompanyController::class);

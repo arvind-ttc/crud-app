@@ -65,4 +65,13 @@ class CompanyController extends Controller
 
         return redirect()->route('companies.index')->with('success','Company Has Been updated successfully');
     }
+
+    /**
+     * Remove the specified company from database
+     */
+    public function destroy(Company $company)
+    {
+        $company->delete();
+        return redirect()->route('companies.index')->with('success', 'Company has been deleted successfully');
+    }
 }
