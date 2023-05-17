@@ -6,6 +6,11 @@
 </head>
 <body>
     <div class="container mt-2">
+        <div class="row">
+                <div class="pull-right mb-2">
+                    <a class="btn btn-success" href="{{ route('companies.create') }}"> Create Company</a>
+                </div>
+        </div>
         <table class="table table-bordered">
             <thead>
                 <tr>

@@ -8,8 +8,6 @@ class CompanyController extends Controller
 {
     /**
      * Display a listing of the resource.
-     * 
-     * @return \Illuminate\Http\Response
      */
     public function index()
     {
@@ -19,4 +17,30 @@ class CompanyController extends Controller
         // array will be the value of the variable
         return view('companies.index', compact('companies'));
     }
+
+    /**
+    * Show the form for creating a new resource.
+    */
+    public function create()
+    {
+        return view('companies.create');
+    }
+
+    /**
+    * Store a newly created resource in storage.
+    */
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'address' => 'required',
+        ]);
+        
+        Company::create($request->post());
+
+        return redirect()->route('companies.index')->with('success','Company has been created successfully.');
+    }
+
+
 }
